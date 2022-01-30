@@ -8,7 +8,6 @@ import {
 import "react-notifications/lib/notifications.css";
 
 import MintTab from "./MintTab";
-import InventoryTab from "./InventoryTab";
 import styles from "./MintScreen.module.css";
 import WALLET_ICON from "../../assets/images/wallet.svg";
 import AppSpinner from "../../components/loading/AppSpinner";
@@ -226,7 +225,6 @@ const MintScreen = () => {
                 <Tab className={styles.tabNormal}>
                   Mint ({userMintTokens.length})
                 </Tab>
-                <Tab className={styles.tabNormal}>Inventory</Tab>
               </TabList>
             </div>
             <TabPanel>
@@ -236,13 +234,6 @@ const MintScreen = () => {
                 connect={(name) => connect(name)}
                 flag={web3Modal.cachedProvider}
                 handleMint={(mintCount) => mintFunction(mintCount)}
-              />
-            </TabPanel>
-            <TabPanel>
-              <InventoryTab
-                data={userMintTokens}
-                connect={(name) => connect(name)}
-                flag={web3Modal.cachedProvider}
               />
             </TabPanel>
           </Tabs>
