@@ -22,7 +22,7 @@ import wlUserList from "../../wl/user.json";
 import publicProof from "../../wl/public.json";
 
 const infuraId = "88b3ca144c6648df843909df0371ee08";
-const contractAddress = "0x9c68B84a7B3F85e911Ce8d73722be6abA0278f4E";
+const contractAddress = "0x7e576912eC2A5D893cA5c7a76A42c38092aa3C71";
 const contractAbi = abi;
 const tokenPrice = 0.1;
 
