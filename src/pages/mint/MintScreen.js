@@ -21,7 +21,8 @@ import wlUserList from "../../wl/user.json";
 import publicProof from "../../wl/public.json";
 
 const infuraId = "88b3ca144c6648df843909df0371ee08";
-const contractAddress = "0x7e576912eC2A5D893cA5c7a76A42c38092aa3C71";
+const contractAddress = "0xC9D316Fc70a3bdf43F03D0B5b9aEc46695a064CE"; //Real
+
 const contractAbi = abi;
 const tokenPrice = 0.1;
 
@@ -69,9 +70,9 @@ const MintScreen = () => {
   useEffect(() => {
     if (web3Modal.cachedProvider) {
       let connectType = "MetaMask";
-      if (web3Modal.cachedProvider == "injected") {
+      if (web3Modal.cachedProvider === "injected") {
         connectType = "MetaMask";
-      } else if (web3Modal.cachedProvider == "walletconnect") {
+      } else if (web3Modal.cachedProvider === "walletconnect") {
         connectType = "WalletConnect";
       } else {
         connectType = "Coinbase Wallet";
@@ -152,12 +153,6 @@ const MintScreen = () => {
     let userIndex = wlUsers.indexOf(userAddress);
     let hexProof = tree.getHexProof(leaf);
 
-    for (var kk in wlUsers) {
-      const ll = keccak256(wlUsers[kk]);
-      let hh = tree.getHexProof(ll);
-      console.log(hh.length);
-    }
-
     console.log(root);
     console.log(userIndex, hexProof);
 
@@ -169,10 +164,16 @@ const MintScreen = () => {
         );
         return;
       }
+    } else {
+      NotificationManager.error(
+        `This is not sale time.`,
+        "Info"
+      );
+      return;
     }
 
     //Public Sale
-    if (sale && saleAmount == 2 && !hexProof.length) {
+    if (sale && saleAmount === 2 && !hexProof.length) {
       hexProof = publicProof;
       userIndex = 0;
     }
